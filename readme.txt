@@ -1,0 +1,1 @@
+I created dinorows/georgemichael by running sudo docker build . -t dinorows/georgemichael on an AWS Linux AMI with docker installed

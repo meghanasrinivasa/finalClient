@@ -55,9 +55,7 @@ namespace WebApplication1.Pages
         {
             //LoadJson();
 
-            //var url = "https://openexchangerates.org/api/latest.json?app_id=YOUR_APP_ID ";
             var url = "https://raw.githubusercontent.com/dinorows/files/master/gmjb.json";
-            //var currencyRates = _download_serialized_json_data<Item>(url);
             var songs = download_serialized_json_data(url);
             foreach(var song in songs)
             {

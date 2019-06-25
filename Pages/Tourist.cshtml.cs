@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,13 +10,13 @@ using Newtonsoft.Json;
 
 namespace WebApplication1.Pages
 {
-    public class FaithModel : PageModel
+    public class TouristModel : PageModel
     {
-        public string About { get; private set; } = "About Boston..";
+        public string place { get; private set; } = "Tourist  Places";
 
         public void OnGet()
         {
-            var url = "http://40.117.125.23:80/api/song/Faith";
+            var url = "http://137.117.43.80/api/city/tourist";
 			using (var w = new WebClient())
             {
                 var json_data = string.Empty;
@@ -26,13 +26,13 @@ namespace WebApplication1.Pages
                 }
                 catch (Exception) { }
 
-                About = "<h1>About Boston</h1></br>"+json_data;
+                place = "<h1>Tourist Places</h1></br> "+ json_data;
             } 
         }
 
         public class City
         {
-            public string about;
+            public string place;
         }
     }
 }

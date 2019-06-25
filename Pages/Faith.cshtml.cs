@@ -12,60 +12,27 @@ namespace WebApplication1.Pages
 {
     public class FaithModel : PageModel
     {
-        public string Lyrics { get; private set; } = "Faith..";
+        public string About { get; private set; } = "About Boston..";
 
-        private List<Item> download_serialized_json_data(string url)
+        public void OnGet()
         {
-            using (var w = new WebClient())
+            var url = "http://40.117.125.23:80/api/song/Faith";
+			using (var w = new WebClient())
             {
                 var json_data = string.Empty;
-                // attempt to download JSON data as a string
                 try
                 {
                     json_data = w.DownloadString(url);
                 }
                 catch (Exception) { }
 
-                // if string with JSON data is not empty, deserialize it to class and return its instance 
-                //return !string.IsNullOrEmpty(json_data) ? JsonConvert.DeserializeObject<T>(json_data) : new T();
-
-                List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json_data);
-                return items;
-            }
+                About = "<h1>About Boston</h1></br>"+json_data
+            } 
         }
 
-        public void OnGet()
+        public class City
         {
-            //LoadJson();
-
-            //var url = "https://openexchangerates.org/api/latest.json?app_id=YOUR_APP_ID ";
-            var url = "https://raw.githubusercontent.com/dinorows/files/master/gmjb.json";
-            //var currencyRates = _download_serialized_json_data<Item>(url);
-            var songs = download_serialized_json_data(url);
-            foreach (var song in songs)
-            {
-                if (song.title == "Faith")
-                {
-                    Lyrics = "<h1>Faith</h1><br/>" + song.lyrics;
-                }
-            }
-        }
-
-        public void LoadJson()
-        {
-            string url = "https://raw.githubusercontent.com/dinorows/files/master/gmjb.json";
-            using (StreamReader r = new StreamReader(url))
-            {
-                string json = r.ReadToEnd();
-                List<Item> items = JsonConvert.DeserializeObject<List<Item>>(json);
-            }
-        }
-
-        public class Item
-        {
-            public string title;
-            public string author;
-            public string lyrics;
+            public string about;
         }
     }
 }

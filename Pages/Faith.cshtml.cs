@@ -26,7 +26,7 @@ namespace WebApplication1.Pages
                 }
                 catch (Exception) { }
 
-                About = "<h1>About Boston</h1></br>"+json_data
+                About = "<h1>About Boston</h1></br>"+json_data;
             } 
         }
 

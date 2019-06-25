@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: georgemichaeljb
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: WebApplication1
+    spec:
+      containers:
+        - image: "meghanasrinivasa/georgemichaeljb"
+          imagePullPolicy: Always
+          name: georgemichaeljb
+          ports:
+            - containerPort: 80
+
